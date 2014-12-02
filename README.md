@@ -199,7 +199,7 @@ while(1)  {
 			initMSP430();
 			newIRPacket= FALSE;
 		}
-	~~~
+~~~
 	After testing to ensure consistent performace of the button presses, I had completed the lab.  A video of A functionality appears below
 	
 #A Functionality Link
