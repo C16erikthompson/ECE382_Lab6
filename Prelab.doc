@@ -1,0 +1,22 @@
+
+Lab 6 Prelab
+Which pins will output which signals you need?
+	Pins 1.0, 1.1, 1.2, and 1.3 will be used to produce the output signals needed
+Which side of the motor will you attach these signals to?
+	Pins 1.0 and 1.1 will connected to the left motor, 1.1 acting as a ground.  Pins 1.2 and 1.3 will be attached to the right motor, 1.3 acting as a ground
+How will you use these signals to achieve forward / back / left / right movement?
+	Forward = Pins 1.0 and 1.2 will be made high / Back = Pins 1.1 and 1.3 will be made high / Left = Pins 1.1 and 1.2 will be made high / Right = Pins 1.0 and 1.3 will be made high
+How you will setup the PWM subsytem to achieve this control. 
+	Four independent signals will be sent to the two motors, two for each motor.  The Reset mode will be used to implement a ground, while SET/RESET will be used to achieve forward motion at a given speed (dependent on duty cycle).
+What are the registers you'll need to use? 
+	Capture/Compare Control Register
+Consider what additional hardware you'll need (regulator, motor driver chip, decoupling capacitor, etc.) and how you'll configure / connect it.
+	A voltage regulator will be needed to ensure that the MSP430 does not burn itself out by producing too much current as a result of stalling. A Motor Driver Chip will drive the voltage produced by the MSP430 up to a point that it may be utilized to drive the motors.  Three decoupling capacitors will need to be used: two small ones and one large one.  The large capacitor will be used to supplement current when the motor draw spikes.  One of the small capacitors will be used to smooth noise to the RST pin, while the other will be used to smooth high frequency noise.
+Consider the interface you'll want to create to your motors. Do you want to move each motor invidiually (moveLeftMotorForward())? Or do you want to move them together (moveRobotForward())?
+	There will be four subroutines: moveForward(), rotateLeft(), rotateRight(), and moveBackward().  As suggested by the names of the subroutines, the robot will implement “tank movement.”  moveForward() = rotate both of the motors forward / rotateLeft() = left motor backwards, right motor forward / rotateRight() = left motor forward, right motor backward / moveBackward() = rotate both motors backward
+
+Hardware Schematic
+ 
+This picture basically outlines what I wish to do with my devices, however the wiring would be slightly different and I would include two more capacitors to fulfill the purposes described above
+Software Flowchart
+
